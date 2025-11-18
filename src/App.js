@@ -1,76 +1,29 @@
-import React, { useState } from 'react';
-import { useGoogleLogin } from '@react-oauth/google';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import { loginWithGoogle } from "./api/GoogleLogin";
+import { postChatGPT } from "./api/ChatGPT";
 
 function App() {
   const [user, setUser] = useState(null);
   const [userProfile, setUserProfile] = useState(null);
-  const [question, setQuestion] = useState('');
-  const [response, setResponse] = useState('');
+  const [question, setQuestion] = useState("");
+  const [response, setResponse] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const login = useGoogleLogin({
-    onSuccess: (tokenResponse) => {
-      // Fetch user profile
-      fetch('https://www.googleapis.com/oauth2/v2/userinfo', {
-        headers: {
-          Authorization: `Bearer ${tokenResponse.access_token}`,
-        },
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          setUser(tokenResponse);
-          setUserProfile(data);
-        })
-        .catch((err) => {
-          console.error('Error fetching user profile:', err);
-        });
-    },
-    onError: (error) => {
-      console.error('Login failed:', error);
-    },
-  });
+  const login = () => loginWithGoogle();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!question.trim() || !userProfile) return;
 
     setLoading(true);
-    setResponse('');
+    setResponse("");
 
     try {
-      const systemPrompt = `My name is ${userProfile.name}.`;
-      
-      const response = await fetch('https://api.openai.com/v1/chat/completions', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${process.env.REACT_APP_OPENAI_API_KEY}`,
-        },
-        body: JSON.stringify({
-          model: 'gpt-3.5-turbo',
-          messages: [
-            {
-              role: 'system',
-              content: systemPrompt,
-            },
-            {
-              role: 'user',
-              content: question,
-            },
-          ],
-        }),
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to fetch response from OpenAI');
-      }
-
-      const data = await response.json();
-      setResponse(data.choices[0].message.content);
+      setResponse(await postChatGPT(question));
     } catch (error) {
-      console.error('Error:', error);
-      setResponse('Sorry, there was an error processing your question.');
+      console.error("Error:", error);
+      setResponse("Sorry, there was an error processing your question.");
     } finally {
       setLoading(false);
     }
@@ -79,8 +32,8 @@ function App() {
   const handleLogout = () => {
     setUser(null);
     setUserProfile(null);
-    setQuestion('');
-    setResponse('');
+    setQuestion("");
+    setResponse("");
   };
 
   return (
@@ -125,7 +78,7 @@ function App() {
                   disabled={loading || !question.trim()}
                   className="submit-button"
                 >
-                  {loading ? 'Sending...' : 'Send'}
+                  {loading ? "Sending..." : "Send"}
                 </button>
               </form>
 
