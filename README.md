@@ -1,70 +1,73 @@
-# Getting Started with Create React App
+# API Integration Demo
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project demonstrates key concepts for integrating with external APIs in React applications.
 
-## Available Scripts
+## Getting Started
 
-In the project directory, you can run:
+### Installation
 
-### `npm start`
+First, install the project dependencies:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```bash
+npm install
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Running the App
 
-### `npm test`
+Start the development server:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+npm start
+```
 
-### `npm run build`
+The app will open at [http://localhost:3000](http://localhost:3000) in your browser.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The page will reload automatically when you make changes to the code.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Lesson Plan
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+This project covers four fundamental topics for working with APIs:
 
-### `npm run eject`
+### 1. Request Structure (Body, Method Type, Headers)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Understanding HTTP methods (GET, POST, PUT, DELETE), request headers (`Content-Type`, `Authorization`), request bodies (JSON format), and URL parameters. Learn when to use each method and how to properly structure requests with headers and data.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 2. Fetch and Async/Await
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Using the Fetch API to make HTTP requests with async/await syntax. Learn to handle promises, parse JSON responses, manage errors with try/catch blocks, and implement loading states.
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 3. Environment Variables
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Securely storing API keys and configuration in `.env` files. Learn to use `process.env` in React, set up environment-specific configs, and understand security best practices (never committing secrets to version control).
 
-### Code Splitting
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### 4. SDKs (Software Development Kits)
 
-### Analyzing the Bundle Size
+Pre-built libraries that simplify API integration (e.g., Google OAuth SDK, Stripe SDK). Learn when to use SDKs vs. direct API calls, how to install and configure SDK packages via npm, and the trade-offs between using SDK methods and custom fetch implementations.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+---
 
-### Making a Progressive Web App
+## Project Structure
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```
+src/
+├── App.js              # Main application component
+├── api/
+│   ├── ChatGPT.js      # ChatGPT API integration
+│   └── GoogleLogin.js  # Google OAuth integration
+└── ...
+```
 
-### Advanced Configuration
+## Next Steps
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+After completing these lessons, you'll be able to:
+- Make API calls from any React application
+- Securely manage API keys and configuration
+- Choose between SDKs and direct API integration
+- Handle asynchronous operations cleanly
+- Build production-ready API integrations
