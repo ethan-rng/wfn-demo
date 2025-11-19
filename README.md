@@ -6,7 +6,7 @@
 # Clone the repository
 git clone https://github.com/ethan-rng/wfn-demo.git
 cd wfn-demo
-git checkout demo/empty-template
+git checkout -b demo/empty-template origin/demo/empty-template
 
 # Set up environment variables
 # MacOS/Linux:
