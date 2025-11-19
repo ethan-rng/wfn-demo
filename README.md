@@ -1,10 +1,22 @@
 # API Integration Demo
 
 ## Getting Started
+
 ```bash
-git clone https://github.com/ethan-rng/wfn-demo/tree/demo/empty-template
+# Clone the repository
+git clone https://github.com/ethan-rng/wfn-demo.git
+cd wfn-demo
+git checkout demo/empty-template
+
+# Set up environment variables
+# MacOS/Linux:
+cp .env.example .env
+# Windows:
+copy .env.example .env
+
+# Install dependencies and start
 npm install
-npm run start
+npm start
 ```
 
 ## Lesson Topics
