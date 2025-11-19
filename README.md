@@ -3,6 +3,10 @@
 This project demonstrates key concepts for integrating with external APIs in React applications.
 
 ## Getting Started
+If you had issues with cloning and checking out the branch, ask for the tar file and run this command to unload everything (tar should be on Windows too, I hope)
+``` bash
+tar -xzf api-demo.tar.gz
+```
 
 ### Installation
 
